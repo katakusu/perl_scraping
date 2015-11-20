@@ -10,19 +10,17 @@ binmode STDERR, ':encoding(cp932)';
 
 use LWP::Simple;
 
-#binmode(STDERR);
+#my $id = shift @ARGV || '074';
 
-#my $id = shift @ARVG || '074';
+my $url = "http://www.yahoo.co.jp";
 
-#my $url = "http://www.anzen.mofa.go.jp/info/info4.asp?id=$id";
-
-#my $content = get($url)
-#die "$url を読み込めませんでした。" unless defined $content;
+my $content = get($url);
+die "$url を読み込めませんでした。" unless defined $content;
 
 #$content = decode('utf-8', $content);
-#$content =~ s/<!--(.*?)-->//gs;
-#$content =~ / SELECTED>▼([^<]+)</;
-#print "$l\n";
+$content =~ s/<!--(.*?)-->//gs;
+$content =~ / SELECTED>▼([^<]+)</;
+print "$content\n";
 #if($content =~ /現在、危険情報はでておりませんが、/){
 #  print "危険情報は出ておりません\n";
 #}else{
